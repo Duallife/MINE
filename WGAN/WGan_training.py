@@ -58,6 +58,7 @@ def celoss_zeros(logits):
 
     return tf.reduce_mean(loss)
 
+
 # WGAN--------------------------------------------------------------
 def gradient_penalty(discriminator, batch_x, fake_image):
     batchsz = batch_x.shape[0]
@@ -121,7 +122,7 @@ def main():
     # parameter of hidden input
     z_dim = 100
     epochs = 3000000
-    batchsz = 256
+    batchsz = 512
     learning_rate = 0.002
     is_training = True
 
