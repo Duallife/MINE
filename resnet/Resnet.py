@@ -93,6 +93,7 @@ class ResNet(keras.Model):
         res_blocks.add(BasicBlock(filter_num, stride))
 
         # from 1-2 add one block, total two blocks for standard unit
+        # blocks-1
         for _ in range(1, blocks):
             res_blocks.add(BasicBlock(filter_num, stride=1))
 
