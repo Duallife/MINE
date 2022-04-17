@@ -34,9 +34,12 @@ class Generator(keras.Model):
         #
         x = self.bn1(self.conv1(x), training=training)
         x = tf.nn.leaky_relu(x)
+        print(x.shape)
         x = self.bn2(self.conv2(x), training=training)
         x = tf.nn.leaky_relu(x)
+        print(x.shape)
         x = self.conv3(x)
+        print(x.shape)
         # 使用tanh,较为稳定
         # range [-1 to 1]
         x = tf.tanh(x)
@@ -80,6 +83,7 @@ def main():
     d = Discriminator()
     g = Generator()
 
+
     x = tf.random.normal([2, 64, 64, 3])
     # hidden variable (input random scalar)
     z = tf.random.normal([2, 100])
@@ -89,7 +93,8 @@ def main():
     print(prob)
     x_hat = g(z)
     print(x_hat.shape)
-
+    d.summary()
+    g.summary()
 
 if __name__ == '__main__':
     main()
